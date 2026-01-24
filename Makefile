@@ -29,7 +29,8 @@ debug: CFLAGS += -g -O0 -DDEBUG
 debug: fclean $(NAME)
 
 $(NAME): $(LIBFT) $(OBJS)
-	ar -rcs $^
+	cp $< $@
+	ar -rcs $@ $(OBJS)
 
 $(LIBFT):
 	$(MAKE) -C $(LIBFT_DIR)
