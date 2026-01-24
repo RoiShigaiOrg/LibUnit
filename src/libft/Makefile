@@ -4,7 +4,6 @@ AR = ar rcs
 RM = rm -f
 
 NAME = libft.a
-NAME_BONUS = libft.a
 
 SRCS = ft_atoi.c \
 	ft_itoa.c \
@@ -39,53 +38,42 @@ SRCS = ft_atoi.c \
 	ft_isprint.c \
 	ft_putendl_fd.c \
 	ft_strlcat.c \
-	ft_substr.c
-
-SRCS_BONUS = ft_lstmap_bonus.c \
-	ft_lstnew_bonus.c \
-	ft_lstadd_front_bonus.c \
-	ft_lstsize_bonus.c \
-	ft_lstlast_bonus.c \
-	ft_lstadd_back_bonus.c \
-	ft_lstdelone_bonus.c \
-	ft_lstclear_bonus.c \
-	ft_lstiter_bonus.c \
-	ft_lstmap_bonus.c
+	ft_substr.c \
+	ft_lstmap.c \
+	ft_lstnew.c \
+	ft_lstadd_front.c \
+	ft_lstsize.c \
+	ft_lstlast.c \
+	ft_lstadd_back.c \
+	ft_lstdelone.c \
+	ft_lstclear.c \
+	ft_lstiter.c \
+	ft_lstmap.c \
+	printf/args.c \
+	printf/convert_base.c \
+	printf/unsigned_convert_base.c \
+	printf/flags2.c \
+	printf/ft_printf.c
+	
 
 HEADERS = libft.h
 
-MANDATORY = .mandatory
-BONUS = .bonus
-
 OBJS = $(SRCS:.c=.o)
-
-OBJS_BONUS = $(SRCS_BONUS:.c=.o)
 
 all: $(NAME)
 
-$(NAME): $(MANDATORY) $(OBJS)
-
-$(MANDATORY): $(OBJS) $(HEADERS)
+$(NAME): $(OBJS) $(HEADERS)
 	$(AR) $(NAME) $(OBJS)
-	touch $(MANDATORY)
-	rm -rf $(BONUS)
-
-bonus: $(BONUS) $(OBJS_BONUS) $(OBJS)
-
-$(BONUS): $(OBJS) $(OBJS_BONUS) $(HEADERS)
-	$(AR) $(NAME) $(OBJS) $(OBJS_BONUS)
-	touch $(BONUS)
-	rm -rf $(MANDATORY)
 
 %.o: %.c $(HEADERS) 
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	$(RM) $(OBJS) $(OBJS_BONUS) $(MANDATORY) $(BONUS)
+	$(RM) $(OBJS)
 
 fclean: clean
 	$(RM) $(NAME)
 
 re: fclean all
 
-.PHONY: all clean fclean re bonus
+.PHONY: all clean fclean re
