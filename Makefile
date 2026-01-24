@@ -4,7 +4,8 @@ BUILD_DIR = build
 SRCS_DIR = src
 
 FILES = load_test.c \
-		launch_test.c
+		launch_test.c \
+		test_group.c
 
 SRCS = $(addprefix $(SRCS_DIR)/, $(FILES))
 OBJS := $(patsubst %.c, $(BUILD_DIR)/%.o, $(FILES))
