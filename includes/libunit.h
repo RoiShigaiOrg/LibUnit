@@ -19,4 +19,13 @@
 # define GREEN "\e[e;32m"
 # define RESET "\e[0m"
 
+typedef struct s_unit_test
+{
+	char	*name;
+	int		(*test_function)(void);
+
+}	t_unit_test;
+
+int	load_test(t_list **test_list, char *name, int (*test_function)(void));
+
 #endif
