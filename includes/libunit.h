@@ -26,6 +26,6 @@ typedef struct s_unit_test
 
 }	t_unit_test;
 
-void	load_test(t_list **test_list, char *name, int (*test_function)(void));
+int	load_test(t_list **test_list, char *name, int (*test_function)(void));
 
 #endif
