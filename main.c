@@ -2,7 +2,7 @@
 
 int	basic_test(void)
 {
-	return (1);
+	return (-1);
 }
 
 int	basic_test2(void)

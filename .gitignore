@@ -57,3 +57,4 @@ dkms.conf
 *.dwo
 compile_commands.json
 .cache
+run_test

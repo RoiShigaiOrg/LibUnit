@@ -27,8 +27,16 @@ typedef struct s_unit_test
 
 }	t_unit_test;
 
-int		load_test(t_list **test_list, char *name, int (*test_function)(void));
-int		launch_test(t_list **test_list);
-int		display_result(t_unit_test *test, int status);
+
+typedef struct s_test_group
+{
+	char	*function_name;
+	t_list	*tests_list;
+}	t_test_group;
+
+int				load_test(t_list **test_list, char *name, int (*test_function)(void));
+int				launch_test(t_list **test_list);
+int				display_result(t_unit_test *test, int status);
+t_test_group	new_test_group(char *function_name);
 
 #endif
