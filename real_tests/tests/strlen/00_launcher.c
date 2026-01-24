@@ -5,14 +5,13 @@
 int strlen_launcher(void)
 {
 	t_test_group	tests;
-	t_list			*testlist;
 
-	tests = new_test_group("ft_strlen")	;
-	testlist = tests.tests_list;
-	load_test(&testlist, "Basic test", &basic_test);
-	load_test(&testlist, "Failed test", &failed_test);
-	load_test(&testlist, "Segfault test", &segfault_test);
-	load_test(&testlist, "Bus error test", &buserror_test);
-	launch_test(&testlist);
+	tests = new_test_group("ft_strlen");
+	load_test(&tests, "Basic test", &basic_test, 0);
+	load_test(&tests, "Failed test", &failed_test, 0);
+	load_test(&tests, "Segfault test", &segfault_test, 0);
+	load_test(&tests, "Bus error test", &buserror_test, 0);
+	load_test(&tests, "Skipped test", &basic_test, 1);
+	launch_test(&(tests.tests_list));
 	return (0);
 }

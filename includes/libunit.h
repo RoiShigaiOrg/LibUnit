@@ -32,9 +32,12 @@ typedef struct s_test_group
 {
 	char	*function_name;
 	t_list	*tests_list;
-}	t_test_group;
+	int		run_tests;
+	int		skipped_tests;
+} t_test_group;
 
-int				load_test(t_list **test_list, char *name, int (*test_function)(void));
+
+int				load_test(t_test_group *test_group, char *name, int (*test_function)(void), int skip);
 int				launch_test(t_list **test_list);
 int				display_result(t_unit_test *test, int status);
 t_test_group	new_test_group(char *function_name);
