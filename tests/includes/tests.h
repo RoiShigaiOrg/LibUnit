@@ -1,5 +1,5 @@
-int strlen_launcher(void);
-int	basic_test(void);
-int	failed_test(void);
-int	segfault_test(void);
-int	buserror_test(void);
+int libunit_launcher(void);
+int	test_ok(void);
+int	test_ko(void);
+int	test_segfault(void);
+int	test_buserror(void);

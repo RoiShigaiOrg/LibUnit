@@ -1,8 +1,8 @@
 #include "libft.h"
 
-int	segfault_test(void)
+int	test_empty_string(void)
 {
-	if (ft_strlen(NULL) == 3)
+	if (ft_strlen("") == 0)
 		return (0);
 	else
 		return (1);

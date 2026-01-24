@@ -1,8 +1,8 @@
 #include "libft.h"
 
-int	buserror_test(void)
+int	test_buserror(void)
 {
-	if (ft_strlen((char *)(-1)) == 3)
+	if (*(char *)(-1))
 		return (0);
 	else
 		return (1);

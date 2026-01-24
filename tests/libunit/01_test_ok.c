@@ -1,8 +1,8 @@
 #include "libft.h"
 
-int	basic_test(void)
+int	test_ok(void)
 {
-	if (ft_strlen("abc") == 3)
+	if (1 == 1)
 		return (0);
 	else
 		return (1);

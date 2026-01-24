@@ -3,5 +3,6 @@
 
 int	main(void)
 {
-	strlen_launcher();
+	ft_strlen_launcher();
+	ft_atoi_launcher();
 }

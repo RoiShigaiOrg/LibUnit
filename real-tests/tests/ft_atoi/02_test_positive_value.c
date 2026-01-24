@@ -1,8 +1,8 @@
 #include "libft.h"
 
-int	failed_test(void)
+int	test_positive_value(void)
 {
-	if (ft_strlen("abc") == 2)
+	if (ft_atoi("255") == 255)
 		return (0);
 	else
 		return (-1);

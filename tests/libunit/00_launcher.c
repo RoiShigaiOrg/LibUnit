@@ -2,16 +2,16 @@
 #include "tests.h"
 #include "libunit.h"
 
-int strlen_launcher(void)
+int libunit_launcher(void)
 {
 	t_test_group	tests;
 
-	tests = new_test_group("ft_strlen");
-	load_test(&tests, "Basic test", &basic_test, 0);
-	load_test(&tests, "Failed test", &failed_test, 0);
-	load_test(&tests, "Segfault test", &segfault_test, 0);
-	load_test(&tests, "Bus error test", &buserror_test, 0);
-	load_test(&tests, "Skipped test", &basic_test, 1);
+	tests = new_test_group("libunit");
+	load_test(&tests, "Test OK", &test_ok, 0);
+	load_test(&tests, "Test KO", &test_ko, 0);
+	load_test(&tests, "Test Segfault", &test_segfault, 0);
+	load_test(&tests, "Test Bus Error", &test_buserror, 0);
+	load_test(&tests, "Test Skipped Test", &test_ok, 1);
 	launch_test(&(tests.tests_list));
 	return (0);
 }
