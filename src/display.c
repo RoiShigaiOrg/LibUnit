@@ -13,7 +13,8 @@
 
 static char	*format_status(int status)
 {
-	if (status == 0)
+	ft_printf("value = %d\n", status);
+	if (status == 1)
 		return(ft_strdup("[OK]"));
 	if (status == 65280)
 		return(ft_strdup("[KO]"));
@@ -37,7 +38,7 @@ int	display_result(t_unit_test *test, int status)
 	status_str = format_status(status);
 	if (status_str == NULL)
 		return (0);
-	if (status == 0)
+	if (status == 1)
 		ft_printf("%s%s %s%s\n", GREEN, test->name, status_str, RESET);
 	else
 	 	ft_printf("%s%s %s%s\n", RED, test->name, status_str, RESET);

@@ -33,7 +33,7 @@ int	launch_test(t_list **test_list)
 		else
 			wait(&status);
 		if (WIFEXITED(status))
-			display_result((*test_list)->content,status);
+			display_result((*test_list)->content, WIFEXITED(status));
 		test_list = &(*test_list)->next;
 	}
 	return (ret);
