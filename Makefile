@@ -5,6 +5,7 @@ SRCS_DIR = src
 
 FILES = load_test.c \
 		launch_test.c \
+		display.c \
 		test_group.c
 
 SRCS = $(addprefix $(SRCS_DIR)/, $(FILES))
