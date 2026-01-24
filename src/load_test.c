@@ -1,11 +1,18 @@
 #include "libunit.h"
 #include <stdlib.h>
 
-int	load_test(t_list **test_list, char *name, int (*test_function)(void))
+int	load_test(t_test_group *test_group, char *name, int (*test_function)(void), int skip)
 {
 	t_unit_test	*test;
 	t_list		*new_node;
 	
+	if (skip)
+	{
+		test_group->skipped_tests += 1;
+		return (0);
+	}
+	else
+		test_group->run_tests += 1;
 	test = malloc(sizeof(t_unit_test));
 	if (!test)
 		return (-1);
@@ -17,6 +24,6 @@ int	load_test(t_list **test_list, char *name, int (*test_function)(void))
 		free(test);
 		return (-1);
 	}
-	ft_lstadd_back(test_list, new_node);
+	ft_lstadd_back(&(test_group->tests_list), new_node);
 	return (0);
 }
