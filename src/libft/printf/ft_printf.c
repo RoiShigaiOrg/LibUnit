@@ -80,5 +80,6 @@ int	ft_printf(const char *buff, ...)
 			len += write(1, &buff[i], 1);
 		i++;
 	}
+	va_end(args);
 	return (len);
 }
