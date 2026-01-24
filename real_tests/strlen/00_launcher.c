@@ -2,20 +2,6 @@
 #include "tests.h"
 #include "libunit.h"
 
-void	launch_tests(t_list **testlist)
-{
-	t_list	*node;
-	t_unit_test	*unit_test;
-
-	node = *testlist;
-	while (node)
-	{
-		unit_test = (t_unit_test *)node->content;
-		ft_printf("%s\n", unit_test->name);
-		node = node->next;
-	}
-}
-
 int strlen_launcher(void)
 {
 	t_list *testlist;
