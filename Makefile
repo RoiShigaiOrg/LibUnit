@@ -1,16 +1,17 @@
-EXEC= libunit.a
+NAME = libunit.a
 
 BUILD_DIR = build
-SRCS_FILES = unit_test.c
 SRCS_DIR = src
+
+FILES = load_test.c
 
 SRCS = $(addprefix $(SRCS_DIR)/, $(FILES))
 OBJS := $(patsubst %.c, $(BUILD_DIR)/%.o, $(FILES))
 DEPS := $(patsubst %.c, $(BUILD_DIR)/%.d, $(FILES))
 
-LIBFTPRINTF_DIR = libftprintf
-LIBFTPRINTF_FILE = libftprintf.a
-LIBFTPRINTF = $(LIBFTPRINTF_DIR)/$(LIBFTPRINTF_FILE)
+LIBFT_DIR = $(SRCS_DIR)/libft
+LIBFT_FILE = libft.a
+LIBFT = $(LIBFT_DIR)/$(LIBFT_FILE)
 
 INCLUDES_DIR = includes
 
@@ -27,11 +28,11 @@ bonus: $(BONUS)
 debug: CFLAGS += -g -O0 -DDEBUG
 debug: fclean $(NAME)
 
-$(NAME): $(OBJS) $(LIBFTPRINTF)
-	$(CC) $^ -o $@ 
+$(NAME): $(LIBFT) $(OBJS)
+	ar -rcs $^
 
-$(LIBFTPRINTF):
-	$(MAKE) -C $(LIBFTPRINTF_DIR)
+$(LIBFT):
+	$(MAKE) -C $(LIBFT_DIR)
 
 $(BUILD_DIR)/%.o: $(SRCS_DIR)/%.c
 	@mkdir -p $(dir $@)
@@ -39,16 +40,16 @@ $(BUILD_DIR)/%.o: $(SRCS_DIR)/%.c
 
 norm: $(SRCS)
 	@echo ⏳ Running norminette...
-	@norminette -R CheckForbiddenHeader $(SRCS_DIR) $(INCLUDES_DIR) $(LIBFTPRINTF_DIR)
+	@norminette -R CheckForbiddenHeader $(SRCS_DIR) $(INCLUDES_DIR) $(LIBFT_DIR)
 	@echo ✅ Norminette passed!
 
 clean:
 	rm -rfv $(BUILD_DIR) $(TESTS_BUILD_DIR)
-	$(MAKE) -C $(LIBFTPRINTF_DIR) clean
+	$(MAKE) -C $(LIBFT_DIR) clean
 
 fclean: clean
 	rm -fv $(TESTS_BIN)
 	rm -f $(NAME)
-	$(MAKE) -C $(LIBFTPRINTF_DIR) fclean
+	$(MAKE) -C $(LIBFT_DIR) fclean
 
 re: fclean all
