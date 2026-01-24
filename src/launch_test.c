@@ -22,19 +22,20 @@ int	launch_test(t_list **test_list)
 {
 	int	status;
 	int	ret;
+	pid_t	child_pid;
 
 	ret = 0;
 	if (test_list == NULL)
 		return (-1);
-	while (test_list)
+	while (*test_list)
 	{
 		if ((child_pid = fork()) == 0)
-			exit(test(*test_list->content));
+			exit(test((*test_list)->content));
 		else
 			wait(&status);
-		if (WIFEXITED(stat))
+		if (WIFEXITED(status))
 			ft_printf(" %d\n", WEXITSTATUS(status));
-		test_list = *test_list->next;
+		test_list = &(*test_list)->next;
 	}
 	return (ret);
 }
