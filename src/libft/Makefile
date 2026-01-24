@@ -5,6 +5,7 @@ RM = rm -f
 
 NAME = libft.a
 
+INCLUDES=../../includes/
 SRCS = ft_atoi.c \
 	ft_itoa.c \
 	ft_putnbr_fd.c \
@@ -56,17 +57,18 @@ SRCS = ft_atoi.c \
 	printf/ft_printf.c
 	
 
-HEADERS = libft.h
+HEADERS = $(INCLUDES)libft.h \
+		  $(INCLUDES)ft_prinf.h
 
 OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJS) $(HEADERS)
+$(NAME): $(OBJS)
 	$(AR) $(NAME) $(OBJS)
 
-%.o: %.c $(HEADERS) 
-	$(CC) $(CFLAGS) -c $< -o $@
+%.o: %.c 
+	$(CC) $(CFLAGS) -I$(INCLUDES) -c $< -o $@
 
 clean:
 	$(RM) $(OBJS)
