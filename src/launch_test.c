@@ -6,7 +6,7 @@
 /*   By: melschmi <melschmi@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 13:09:53 by melschmi          #+#    #+#             */
-/*   Updated: 2026/01/24 13:17:24 by melschmi         ###   ########.fr       */
+/*   Updated: 2026/01/24 15:54:18 by melschmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int	test(t_unit_test *test)
 {
-	ft_printf("%s", test->name);
 	return (test->test_function());
 }
 
@@ -34,7 +33,7 @@ int	launch_test(t_list **test_list)
 		else
 			wait(&status);
 		if (WIFEXITED(status))
-			ft_printf(" %d\n", WEXITSTATUS(status));
+			display_result((*test_list)->content,status);
 		test_list = &(*test_list)->next;
 	}
 	return (ret);
