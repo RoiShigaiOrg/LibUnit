@@ -19,6 +19,11 @@
 # define GREEN "\e[e;32m"
 # define RESET "\e[0m"
 
+typedef enum	e_status
+{
+		
+}	t_status;
+
 typedef struct s_unit_test
 {
 	char	*name;
