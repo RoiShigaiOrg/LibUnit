@@ -15,4 +15,8 @@
 
 # include "libft.h"
 
+# define RED "\e[e;30m"
+# define GREEN "\e[e;32m"
+# define RESET "\e[0m"
+
 #endif
