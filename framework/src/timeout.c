@@ -6,7 +6,7 @@
 /*   By: melschmi <melschmi@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 11:56:40 by melschmi          #+#    #+#             */
-/*   Updated: 2026/01/25 15:37:24 by melschmi         ###   ########.fr       */
+/*   Updated: 2026/01/25 16:21:13 by melschmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libunit.h"
@@ -59,9 +59,9 @@ void	*wait_process(void *data_void)
 	return (NULL);
 }
 
-void	print_timeout(t_unit_test *test)
+void	print_timeout(t_test_group *group, t_unit_test *test)
 {
-	ft_printf("%s%s [TIMEOUT]%s\n", RED, test->name, RESET);
+	ft_printf("%s: %s%s: [TIMEOUT]%s\n",group->function_name, RED, test->name, RESET);
 }
 
 int	timeout(int *status, pid_t child_pid)
