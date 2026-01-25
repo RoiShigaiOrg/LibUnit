@@ -11,10 +11,16 @@
 /* ************************************************************************** */
 
 #include "libunit.h"
+#include <signal.h>
 
 int	test(t_unit_test *test)
 {
-	return (test->test_function());
+	return (run_print_fct(test->test_function));
+}
+
+void	timeout_handler(int sig)
+{
+	exit(sig);
 }
 
 void	exec_test(t_list *test_list, t_test_group *test_group, int *score)
@@ -26,6 +32,8 @@ void	exec_test(t_list *test_list, t_test_group *test_group, int *score)
 	child_pid = fork();
 	if (child_pid == 0)
 	{
+		signal(SIGALRM, timeout_handler);
+		alarm(TIMEOUT);
 		exit_code = test(test_list->content);
 		ft_lstclear(&test_group->tests_list, free);
 		exit(exit_code);
