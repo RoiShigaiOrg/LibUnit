@@ -6,7 +6,7 @@
 /*   By: melschmi <melschmi@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 10:40:21 by melschmi          #+#    #+#             */
-/*   Updated: 2026/01/25 15:43:06 by melschmi         ###   ########.fr       */
+/*   Updated: 2026/01/25 15:50:59 by melschmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,6 @@
 # define GREEN "\e[1;32m"
 # define YELLOW "\e[1;33m"
 # define RESET "\e[m"
-# define TRUE 1
-# define FALSE 0
 
 typedef struct s_unit_test
 {
