@@ -26,11 +26,3 @@ char	*ft_strchr(const char *s, int c)
 	}
 	return (NULL);
 }
-
-/*#include <stdio.h>
-int	main()
-{
-	printf("%s\n", ft_strchr("teste", 357));
-	printf("%s\n", ft_strchr("teste", 1024));
-	return (0);
-}*/
