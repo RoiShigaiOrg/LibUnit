@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   load_test.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: melschmi <melschmi@student.42lyon.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/01/25 10:44:43 by melschmi          #+#    #+#             */
+/*   Updated: 2026/01/25 10:45:26 by melschmi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libunit.h"
 #include <stdlib.h>
 
@@ -5,7 +17,7 @@ int	load_test(t_test_group *test_group, char *name, int (*test_function)(void), 
 {
 	t_unit_test	*test;
 	t_list		*new_node;
-	
+
 	if (skip)
 	{
 		test_group->skipped_tests += 1;
