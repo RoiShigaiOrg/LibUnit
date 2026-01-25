@@ -8,7 +8,6 @@ FILES = \
 	launch_test.c \
 	display.c \
 	test_group.c \
-	timeout.c \
 	run_print_fct.c
 
 SRCS = $(addprefix $(SRCS_DIR)/, $(FILES))
