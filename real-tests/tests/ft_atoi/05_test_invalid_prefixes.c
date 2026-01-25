@@ -2,7 +2,7 @@
 
 int	test_invalid_prefixes(void)
 {
-	if (ft_strlen("- +40") == 0)
+	if (ft_atoi("- +40") == 0)
 		return (0);
 	else
 		return (-1);
