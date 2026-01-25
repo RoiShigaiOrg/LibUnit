@@ -14,10 +14,18 @@
 
 static char	*format_status(int status)
 {
+	if (status == 14)
+		return (ft_strdup("[TIMEOUT]"));
 	if (status == 0)
 		return (ft_strdup("[OK]"));
 	if (status == 255)
 		return (ft_strdup("[KO]"));
+	if (status == SIGILL)
+		return (ft_strdup("[SIGILL]"));
+	if (status == SIGABRT)
+		return (ft_strdup("[SIGABRT]"));
+	if (status == SIGFPE)
+		return (ft_strdup("[SIGFPE]"));
 	if (status == SIGBUS)
 		return (ft_strdup("[SIGBUS]"));
 	if (status == SIGSEGV)

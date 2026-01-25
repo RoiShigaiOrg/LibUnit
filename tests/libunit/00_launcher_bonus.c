@@ -23,6 +23,11 @@ int	libunit_launcher(void)
 	load_test(&tests, "Test Segfault", &test_segfault, 0);
 	load_test(&tests, "Test Bus Error", &test_buserror, 0);
 	load_test(&tests, "Test Skipped Test", &test_ok, 1);
+	load_test(&tests, "Test Timeout", &test_timeout, 0);
+	load_test(&tests, "Test Print Stdout Function",
+		&test_print_stdout_function, 0);
+	load_test(&tests, "Test sigabort", &test_sigabort, 0);
+	load_test(&tests, "Test sigfpe", &test_sigfpe, 0);
 	launch_test(&tests);
 	ft_lstclear(&tests.tests_list, free);
 	return (0);
