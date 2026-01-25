@@ -31,18 +31,19 @@ typedef struct s_unit_test
 
 }	t_unit_test;
 
-
 typedef struct s_test_group
 {
 	char	*function_name;
 	t_list	*tests_list;
 	int		run_tests;
 	int		skipped_tests;
-} t_test_group;
+}	t_test_group;
 
-int				load_test(t_test_group *test_group, char *name, int (*test_function)(void), int skip);
+int				load_test(t_test_group *test_group, char *name,
+					int (*test_function)(void), int skip);
 int				launch_test(t_test_group *test_group);
-int				display_result(t_test_group *test_group, t_unit_test *test, int status);
+int				display_result(t_test_group *test_group,
+					t_unit_test *test, int status);
 void			display_header(t_test_group *test_group);
 void			display_footer(t_test_group *test_group, int success);
 t_test_group	new_test_group(char *function_name);

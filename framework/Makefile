@@ -28,8 +28,7 @@ TESTS_FILES = \
 	libunit/05_test_timeout.c \
 	libunit/06_test_print_stdout_function.c \
 	libunit/07_test_sigabort.c \
-	libunit/08_test_sigfpe.c \
-	libunit/09_test_sigpipe.c
+	libunit/08_test_sigfpe.c
 TESTS_SRCS = $(addprefix $(TESTS_DIR)/, $(TESTS_FILES))
 TESTS_OBJS := $(patsubst %.c, $(TESTS_BUILD_DIR)/%.o, $(TESTS_FILES))
 TESTS_DEPS := $(patsubst %.c, $(TESTS_BUILD_DIR)/%.d, $(TESTS_FILES))

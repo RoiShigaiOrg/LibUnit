@@ -15,8 +15,8 @@ int	test_sigfpe(void)
 	int	a;
 
 	a = 1;
-	if (a / a - 1)
+	if (a / (a - 1))
 		return (0);
 	else
-		return (1);
+		return (-1);
 }

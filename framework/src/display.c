@@ -14,7 +14,6 @@
 
 static char	*format_status(int status)
 {
-	ft_printf("status %d\n", status);
 	if (status == 14)
 		return (ft_strdup("[TIMEOUT]"));
 	if (status == 0)
@@ -65,7 +64,10 @@ int	display_result(t_test_group *test_group, t_unit_test *test, int status)
 
 	status_str = format_status(status);
 	if (status_str == NULL)
-		return (0);
+	{
+		ft_printf("Test Execution Error...\n");
+		return (-2);
+	}
 	if (status == 0)
 		ft_printf("%s: %s%s: %s%s\n", test_group->function_name, GREEN,
 			test->name, status_str, RESET);

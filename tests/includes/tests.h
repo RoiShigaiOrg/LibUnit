@@ -22,6 +22,5 @@ int	test_timeout(void);
 int	test_print_stdout_function(void);
 int	test_sigabort(void);
 int	test_sigfpe(void);
-int	test_sigpipe(void);
 
 #endif

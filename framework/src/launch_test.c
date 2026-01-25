@@ -18,7 +18,7 @@ int	test(t_unit_test *test)
 	return (run_print_fct(test->test_function));
 }
 
-void	timeout_handler(int	sig)
+void	timeout_handler(int sig)
 {
 	exit(sig);
 }
@@ -26,6 +26,7 @@ void	timeout_handler(int	sig)
 void	exec_test(t_list *test_list, t_test_group *test_group, int *score)
 {
 	int		status;
+	int		exit_code;
 	pid_t	child_pid;
 
 	child_pid = fork();
@@ -33,7 +34,9 @@ void	exec_test(t_list *test_list, t_test_group *test_group, int *score)
 	{
 		signal(SIGALRM, timeout_handler);
 		alarm(TIMEOUT);
-		exit (test(test_list->content));
+		exit_code = test(test_list->content);
+		ft_lstclear(&test_group->tests_list, free);
+		exit(exit_code);
 	}
 	wait(&status);
 	if (WIFEXITED(status))
@@ -62,5 +65,8 @@ int	launch_test(t_test_group *test_group)
 		test_list = test_list->next;
 	}
 	display_footer(test_group, score);
-	return (0);
+	if (test_group->run_tests == score)
+		return (0);
+	else
+		return (-1);
 }
