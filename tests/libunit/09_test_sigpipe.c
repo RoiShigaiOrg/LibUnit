@@ -1,21 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   04_test_valid_prefixes.c                           :+:      :+:    :+:   */
+/*   09_test_sigpipe.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arebilla <arebilla@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/25 17:16:13 by arebilla          #+#    #+#             */
-/*   Updated: 2026/01/25 17:16:21 by arebilla         ###   ########.fr       */
+/*   Created: 2026/01/25 17:51:00 by arebilla          #+#    #+#             */
+/*   Updated: 2026/01/25 17:55:54 by arebilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <unistd.h>
 
-int	test_valid_prefixes(void)
+int	test_sigpipe(void)
 {
-	if (ft_atoi("  \t\t\f +10") == 10)
-		return (0);
-	else
-		return (-1);
+	char	buf;
+	int pipefd[2];
+
+	pipe(pipefd);
+	close(pipefd[0]);
+	close(pipefd[1]);
+	read(pipefd[0], &buf, 1);
+	return(0);
 }

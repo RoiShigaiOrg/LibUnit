@@ -6,7 +6,7 @@
 /*   By: melschmi <melschmi@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 10:40:21 by melschmi          #+#    #+#             */
-/*   Updated: 2026/01/25 12:55:08 by arebilla         ###   ########.fr       */
+/*   Updated: 2026/01/25 15:50:59 by melschmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,14 @@
 # define LIBUNIT_H
 
 # include "libft.h"
+# include <signal.h>
 # include <sys/wait.h>
+# include <time.h>
+# include "timeout.h"
 
 # define RED "\e[1;31m"
 # define GREEN "\e[1;32m"
+# define YELLOW "\e[1;33m"
 # define RESET "\e[m"
 
 typedef struct s_unit_test
@@ -40,7 +44,9 @@ int				load_test(t_test_group *test_group, char *name, int (*test_function)(void
 int				launch_test(t_test_group *test_group);
 int				display_result(t_test_group *test_group, t_unit_test *test, int status);
 void			display_header(t_test_group *test_group);
+void			display_footer(t_test_group *test_group, int success);
 t_test_group	new_test_group(char *function_name);
+void			print_timeout(t_unit_test *test);
 int				run_print_fct(int (*f)(void));
 
 #endif

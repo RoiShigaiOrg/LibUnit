@@ -1,21 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   04_test_valid_prefixes.c                           :+:      :+:    :+:   */
+/*   08_test_sigfpe.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arebilla <arebilla@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/25 17:16:13 by arebilla          #+#    #+#             */
-/*   Updated: 2026/01/25 17:16:21 by arebilla         ###   ########.fr       */
+/*   Created: 2026/01/25 17:20:03 by arebilla          #+#    #+#             */
+/*   Updated: 2026/01/25 17:44:02 by arebilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-int	test_valid_prefixes(void)
+int	test_sigfpe(void)
 {
-	if (ft_atoi("  \t\t\f +10") == 10)
+	int	a;
+
+	a = 1;
+	if (a / a - 1)
 		return (0);
 	else
-		return (-1);
+		return (1);
 }

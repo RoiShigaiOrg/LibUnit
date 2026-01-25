@@ -1,16 +1,27 @@
-#include "libft.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   04_test_buserror.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: arebilla <arebilla@student.42lyon.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/01/25 17:20:09 by arebilla          #+#    #+#             */
+/*   Updated: 2026/01/25 17:36:05 by arebilla         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdlib.h>
 
 static int	bus_error_function(void)
 {
-	int 	*iptr;
-	char 	*cptr;
+	int		*iptr;
+	char	*cptr;
 
 	__asm__("pushf\norl $0x40000,(%rsp)\npopf");
-
 	cptr = malloc(sizeof(int) + 1);
 	iptr = (int *)++cptr;
 	*iptr = 42;
-	return 0;
+	return (0);
 }
 
 int	test_buserror(void)
