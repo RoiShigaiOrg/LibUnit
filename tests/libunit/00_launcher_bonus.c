@@ -13,10 +13,13 @@
 #include "tests.h"
 #include "libunit.h"
 
-int	libunit_launcher(void)
+int	libunit_launcher(int skip)
 {
 	t_test_group	tests;
+	int				result;
 
+	if (skip)
+		return (0);
 	tests = new_test_group("libunit");
 	load_test(&tests, "Test OK", &test_ok, 0);
 	load_test(&tests, "Test KO", &test_ko, 0);
@@ -28,7 +31,7 @@ int	libunit_launcher(void)
 		&test_print_stdout_function, 0);
 	load_test(&tests, "Test sigabort", &test_sigabort, 0);
 	load_test(&tests, "Test sigfpe", &test_sigfpe, 0);
-	launch_test(&tests);
+	result = launch_test(&tests);
 	ft_lstclear(&tests.tests_list, free);
-	return (0);
+	return (result);
 }

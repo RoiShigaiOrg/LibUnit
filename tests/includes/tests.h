@@ -13,7 +13,7 @@
 #ifndef TESTS_H
 # define TESTS_H
 
-int	libunit_launcher(void);
+int	libunit_launcher(int skip);
 int	test_ok(void);
 int	test_ko(void);
 int	test_segfault(void);
