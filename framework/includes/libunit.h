@@ -6,7 +6,7 @@
 /*   By: melschmi <melschmi@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 10:40:21 by melschmi          #+#    #+#             */
-/*   Updated: 2026/01/24 16:07:05 by melschmi         ###   ########.fr       */
+/*   Updated: 2026/01/25 12:55:08 by arebilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # define RED "\e[1;31m"
 # define GREEN "\e[1;32m"
 # define RESET "\e[m"
+# define YELLOW "\e[1;33m"
 
 typedef struct s_unit_test
 {
@@ -36,10 +37,11 @@ typedef struct s_test_group
 	int		skipped_tests;
 } t_test_group;
 
-
 int				load_test(t_test_group *test_group, char *name, int (*test_function)(void), int skip);
-int				launch_test(t_list **test_list);
-int				display_result(t_unit_test *test, int status);
+int				launch_test(t_test_group *test_group);
+int				display_result(t_test_group *test_group, t_unit_test *test, int status);
+void			display_header(t_test_group *test_group);
+void			display_footer(t_test_group *test_group, int success);
 t_test_group	new_test_group(char *function_name);
 int				run_print_fct(int (*f)(void));
 

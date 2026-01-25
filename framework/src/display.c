@@ -6,14 +6,14 @@
 /*   By: melschmi <melschmi@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 15:44:35 by melschmi          #+#    #+#             */
-/*   Updated: 2026/01/25 10:49:16 by melschmi         ###   ########.fr       */
+/*   Updated: 2026/01/25 12:55:13 by arebilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "ft_printf.h"
 #include "libunit.h"
 
 static char	*format_status(int status)
 {
-	ft_printf("[DEBUG] value = %d\n", status);
 	if (status == 0)
 		return (ft_strdup("[OK]"));
 	if (status == 255)
@@ -31,7 +31,32 @@ static char	*format_status(int status)
 	return (ft_strdup("[UNKNOWN]"));
 }
 
-int	display_result(t_unit_test *test, int status)
+void	display_header(t_test_group *test_group)
+{
+	ft_printf("\n<====================== ");
+	ft_printf("%s test session starts", test_group->function_name);
+	ft_printf(" ======================>\n\n");
+	ft_printf("Collected %i tests", test_group->run_tests);
+	if (test_group->skipped_tests)
+		ft_printf(" %s(skipped %i tests)%s", YELLOW, test_group->skipped_tests,
+			RESET);
+	ft_printf("\n\n");
+}
+
+void	display_footer(t_test_group *test_group, int success)
+{
+	ft_printf("\n");
+	if (success == test_group->run_tests)
+		ft_printf("%s====> %s tests success (%i / %i)%s", GREEN,
+			test_group->function_name, success, test_group->run_tests, RESET);
+	else
+		ft_printf("%s====> %s tests failed (%i / %i)%s", RED,
+			test_group->function_name,
+			success, test_group->run_tests, RESET);
+	ft_printf("\n\n");
+}
+
+int	display_result(t_test_group *test_group, t_unit_test *test, int status)
 {
 	char	*status_str;
 
@@ -39,9 +64,11 @@ int	display_result(t_unit_test *test, int status)
 	if (status_str == NULL)
 		return (0);
 	if (status == 0)
-		ft_printf("%s%s %s%s\n", GREEN, test->name, status_str, RESET);
+		ft_printf("%s: %s%s: %s%s\n", test_group->function_name, GREEN,
+			test->name, status_str, RESET);
 	else
-		ft_printf("%s%s %s%s\n", RED, test->name, status_str, RESET);
+		ft_printf("%s: %s%s: %s%s\n", test_group->function_name, RED,
+			test->name, status_str, RESET);
 	if (status_str != NULL)
 		free(status_str);
 	return (1);
