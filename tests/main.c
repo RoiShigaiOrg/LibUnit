@@ -14,5 +14,6 @@
 
 int	main(void)
 {
-	libunit_launcher();
+	libunit_launcher(1);
+	libunit_launcher(0);
 }
