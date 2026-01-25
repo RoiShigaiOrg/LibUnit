@@ -64,10 +64,10 @@ int	display_result(t_test_group *test_group, t_unit_test *test, int status)
 	if (status_str == NULL)
 		return (0);
 	if (status == 0)
-		ft_printf("%s: %s%s %s%s\n", test_group->function_name, GREEN,
+		ft_printf("%s: %s%s: %s%s\n", test_group->function_name, GREEN,
 			test->name, status_str, RESET);
 	else
-		ft_printf("%s: %s%s %s%s\n", test_group->function_name, RED,
+		ft_printf("%s: %s%s: %s%s\n", test_group->function_name, RED,
 			test->name, status_str, RESET);
 	if (status_str != NULL)
 		free(status_str);
