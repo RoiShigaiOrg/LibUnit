@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   04_test_valid_prefixes.c                           :+:      :+:    :+:   */
+/*   01_test_empty_strings_comparison.c                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arebilla <arebilla@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/25 17:16:13 by arebilla          #+#    #+#             */
-/*   Updated: 2026/01/25 17:16:21 by arebilla         ###   ########.fr       */
+/*   Created: 2026/01/25 17:16:46 by arebilla          #+#    #+#             */
+/*   Updated: 2026/01/25 17:17:10 by arebilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	test_valid_prefixes(void)
+int	test_empty_string(void)
 {
-	if (ft_atoi("  \t\t\f +10") == 10)
+	if (ft_strncmp("", "", 1) == 0)
 		return (0);
 	else
-		return (-1);
+		return (1);
 }

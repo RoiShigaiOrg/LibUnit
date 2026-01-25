@@ -62,12 +62,22 @@ TESTS_SRCS = \
 	tests/ft_strlen/00_launcher.c \
 	tests/ft_strlen/01_test_empty_string.c \
 	tests/ft_strlen/02_test_normal_string.c \
+	tests/ft_isalpha/00_launcher.c \
+	tests/ft_isalpha/01_test_alpha.c \
+	tests/ft_isalpha/02_test_not_alpha.c \
 	tests/ft_atoi/00_launcher.c \
 	tests/ft_atoi/01_test_zero_value.c \
 	tests/ft_atoi/02_test_positive_value.c \
 	tests/ft_atoi/03_test_negative_value.c \
 	tests/ft_atoi/04_test_valid_prefixes.c \
-	tests/ft_atoi/05_test_invalid_prefixes.c
+	tests/ft_atoi/05_test_invalid_prefixes.c \
+	tests/ft_strncmp/00_launcher.c \
+	tests/ft_strncmp/01_test_empty_strings_comparison.c \
+	tests/ft_strncmp/02_test_zero_length.c \
+	tests/ft_strncmp/03_test_large_length.c \
+	tests/ft_strncmp/04_test_short_length.c \
+	tests/ft_strncmp/05_test_different_strings_positive_result.c \
+	tests/ft_strncmp/06_test_different_strings_negative_result.c
 TESTS_OBJS = $(patsubst %.c, %.o, $(TESTS_SRCS))
 
 HEADERS = $(INCLUDES)libft.h \

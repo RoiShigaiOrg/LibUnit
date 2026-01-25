@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   04_test_valid_prefixes.c                           :+:      :+:    :+:   */
+/*   04_test_short_length.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arebilla <arebilla@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/25 17:16:13 by arebilla          #+#    #+#             */
-/*   Updated: 2026/01/25 17:16:21 by arebilla         ###   ########.fr       */
+/*   Created: 2026/01/25 17:16:58 by arebilla          #+#    #+#             */
+/*   Updated: 2026/01/25 17:17:10 by arebilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	test_valid_prefixes(void)
+int	test_short_length(void)
 {
-	if (ft_atoi("  \t\t\f +10") == 10)
+	if (ft_strncmp("abczzz", "abcxxx", 3) == 0)
 		return (0);
 	else
-		return (-1);
+		return (1);
 }
