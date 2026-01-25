@@ -6,15 +6,21 @@
 /*   By: melschmi <melschmi@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 13:09:53 by melschmi          #+#    #+#             */
-/*   Updated: 2026/01/25 16:22:23 by melschmi         ###   ########.fr       */
+/*   Updated: 2026/01/25 17:59:55 by melschmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libunit.h"
+#include <signal.h>
 
 int	test(t_unit_test *test)
 {
 	return (run_print_fct(test->test_function));
+}
+
+void	timeout_handler(int	sig)
+{
+	exit(sig);
 }
 
 void	exec_test(t_list *test_list, t_test_group *test_group, int *score)
@@ -24,18 +30,18 @@ void	exec_test(t_list *test_list, t_test_group *test_group, int *score)
 
 	child_pid = fork();
 	if (child_pid == 0)
-		exit (test(test_list->content));
-	if (timeout(&status, child_pid) == 0)
 	{
-		if (WIFEXITED(status))
-			display_result(test_group, test_list->content, WEXITSTATUS(status));
-		else if (WIFSIGNALED(status))
-			display_result(test_group, test_list->content, WTERMSIG(status));
-		if (status == 0)
-			*score += 1;
+		signal(SIGALRM, timeout_handler);
+		alarm(TIMEOUT);
+		exit (test(test_list->content));
 	}
-	else
-		print_timeout(test_group,test_list->content);
+	wait(&status);
+	if (WIFEXITED(status))
+		display_result(test_group, test_list->content, WEXITSTATUS(status));
+	else if (WIFSIGNALED(status))
+		display_result(test_group, test_list->content, WTERMSIG(status));
+	if (status == 0)
+		*score += 1;
 }
 
 int	launch_test(t_test_group *test_group)

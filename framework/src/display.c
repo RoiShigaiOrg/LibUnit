@@ -6,7 +6,7 @@
 /*   By: melschmi <melschmi@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 15:44:35 by melschmi          #+#    #+#             */
-/*   Updated: 2026/01/25 12:55:13 by arebilla         ###   ########.fr       */
+/*   Updated: 2026/01/25 18:03:40 by melschmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -14,19 +14,22 @@
 
 static char	*format_status(int status)
 {
+	ft_printf("status %d\n", status);
+	if (status == 14)
+		return (ft_strdup("[TIMEOUT]"));
 	if (status == 0)
 		return (ft_strdup("[OK]"));
 	if (status == 255)
 		return (ft_strdup("[KO]"));
-	if (status == 127)
+	if (status == SIGILL)
 		return (ft_strdup("[SIGILL]"));
-	if (status == 134)
+	if (status == SIGABRT)
 		return (ft_strdup("[SIGABRT]"));
-	if (status == 136)
+	if (status == SIGFPE)
 		return (ft_strdup("[SIGFPE]"));
-	if (status == 7)
+	if (status == SIGBUS)
 		return (ft_strdup("[SIGBUS]"));
-	if (status == 11)
+	if (status == SIGSEGV)
 		return (ft_strdup("[SIGSEGV]"));
 	return (ft_strdup("[UNKNOWN]"));
 }
