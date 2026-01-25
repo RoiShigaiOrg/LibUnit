@@ -14,7 +14,7 @@
 
 int	test(t_unit_test *test)
 {
-	return (test->test_function());
+	return (run_print_fct(test->test_function));
 }
 
 int	launch_test(t_list **test_list)
