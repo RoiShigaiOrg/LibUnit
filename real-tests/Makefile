@@ -76,7 +76,7 @@ HEADERS = $(INCLUDES)libft.h \
 OBJS = $(SRCS:.c=.o)
 TESTS_OBJS = $(TESTS_SRCS:.c=.o)
 
-LIBUNIT = tests/libunit/libunit.a
+LIBUNIT = ../framework/libunit.a
 
 all: $(NAME)
 

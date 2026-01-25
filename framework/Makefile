@@ -7,7 +7,8 @@ FILES = \
 	load_test.c \
 	launch_test.c \
 	display.c \
-	test_group.c
+	test_group.c \
+	timeout.c
 
 SRCS = $(addprefix $(SRCS_DIR)/, $(FILES))
 OBJS := $(patsubst %.c, $(BUILD_DIR)/%.o, $(FILES))
@@ -23,7 +24,8 @@ TESTS_FILES = \
 	libunit/01_test_ok.c \
 	libunit/02_test_ko.c \
 	libunit/03_test_segfault.c \
-	libunit/04_test_buserror.c
+	libunit/04_test_buserror.c \
+	libunit/05_test_timeout.c
 TESTS_SRCS = $(addprefix $(TESTS_DIR)/, $(TESTS_FILES))
 TESTS_OBJS := $(patsubst %.c, $(TESTS_BUILD_DIR)/%.o, $(TESTS_FILES))
 TESTS_DEPS := $(patsubst %.c, $(TESTS_BUILD_DIR)/%.d, $(TESTS_FILES))
@@ -61,7 +63,7 @@ $(BUILD_DIR)/%.o: $(SRCS_DIR)/%.c
 
 $(TESTS_BUILD_DIR)/%.o: $(TESTS_DIR)/%.c
 	@mkdir -p $(dir $@)
-	$(CC) -c $< -I$(TESTS_INCLUDES_DIR) -o $@
+	$(CC) -g -c $< -I$(TESTS_INCLUDES_DIR) -o $@
 
 $(TESTS_BIN): $(OBJS) $(TESTS_OBJS) $(NAME)
 	$(CC) -I$(TESTS_INCLUDES_DIR) $(TESTS_OBJS) $(NAME) -o $@

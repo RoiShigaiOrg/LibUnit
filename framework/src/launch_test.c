@@ -6,7 +6,7 @@
 /*   By: melschmi <melschmi@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 13:09:53 by melschmi          #+#    #+#             */
-/*   Updated: 2026/01/25 10:48:21 by melschmi         ###   ########.fr       */
+/*   Updated: 2026/01/25 15:26:48 by melschmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,15 @@ int	launch_test(t_list **test_list)
 		child_pid = fork();
 		if (child_pid == 0)
 			exit (test((*test_list)->content));
+		if (timeout(&status, child_pid) == FALSE)
+		{
+			if (WIFEXITED(status))
+				display_result((*test_list)->content, WEXITSTATUS(status));
+			else if (WIFSIGNALED(status))
+				display_result((*test_list)->content, WTERMSIG(status));
+		}
 		else
-			wait(&status);
-		if (WIFEXITED(status))
-			display_result((*test_list)->content, WEXITSTATUS(status));
-		else if (WIFSIGNALED(status))
-			display_result((*test_list)->content, WTERMSIG(status));
+			print_timeout((*test_list)->content);
 		test_list = &(*test_list)->next;
 	}
 	return (ret);
