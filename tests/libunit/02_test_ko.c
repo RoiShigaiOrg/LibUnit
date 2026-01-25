@@ -6,11 +6,9 @@
 /*   By: arebilla <arebilla@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 17:20:00 by arebilla          #+#    #+#             */
-/*   Updated: 2026/01/25 17:20:19 by arebilla         ###   ########.fr       */
+/*   Updated: 2026/01/25 17:35:40 by arebilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "libft.h"
 
 int	test_ko(void)
 {

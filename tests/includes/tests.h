@@ -6,7 +6,7 @@
 /*   By: arebilla <arebilla@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 17:18:52 by arebilla          #+#    #+#             */
-/*   Updated: 2026/01/25 17:19:15 by arebilla         ###   ########.fr       */
+/*   Updated: 2026/01/25 17:56:18 by arebilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,8 @@ int	test_segfault(void);
 int	test_buserror(void);
 int	test_timeout(void);
 int	test_print_stdout_function(void);
+int	test_sigabort(void);
+int	test_sigfpe(void);
+int	test_sigpipe(void);
 
 #endif

@@ -6,11 +6,11 @@
 /*   By: arebilla <arebilla@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 17:20:09 by arebilla          #+#    #+#             */
-/*   Updated: 2026/01/25 17:20:19 by arebilla         ###   ########.fr       */
+/*   Updated: 2026/01/25 17:36:05 by arebilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stdlib.h>
 
 static int	bus_error_function(void)
 {

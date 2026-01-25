@@ -1,20 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   06_test_print_stdout_function.c                    :+:      :+:    :+:   */
+/*   08_test_sigfpe.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arebilla <arebilla@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/25 17:20:16 by arebilla          #+#    #+#             */
-/*   Updated: 2026/01/25 17:36:21 by arebilla         ###   ########.fr       */
+/*   Created: 2026/01/25 17:20:03 by arebilla          #+#    #+#             */
+/*   Updated: 2026/01/25 17:44:02 by arebilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-
-int	test_print_stdout_function(void)
+int	test_sigfpe(void)
 {
-	if (ft_printf("abc") == 3)
+	int	a;
+
+	a = 1;
+	if (a / a - 1)
 		return (0);
 	else
 		return (1);

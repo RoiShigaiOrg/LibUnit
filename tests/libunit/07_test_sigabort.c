@@ -1,21 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   06_test_print_stdout_function.c                    :+:      :+:    :+:   */
+/*   07_test_sigabrt.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arebilla <arebilla@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/25 17:20:16 by arebilla          #+#    #+#             */
-/*   Updated: 2026/01/25 17:36:21 by arebilla         ###   ########.fr       */
+/*   Created: 2026/01/25 17:20:03 by arebilla          #+#    #+#             */
+/*   Updated: 2026/01/25 17:35:08 by arebilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include <stdlib.h>
 
-int	test_print_stdout_function(void)
+int	test_sigabort(void)
 {
-	if (ft_printf("abc") == 3)
-		return (0);
-	else
-		return (1);
+	abort();
+	return (0);
 }
