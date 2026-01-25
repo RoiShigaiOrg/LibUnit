@@ -18,5 +18,7 @@ t_test_group	new_test_group(char *function_name)
 
 	tests_list.function_name = function_name;
 	tests_list.tests_list = NULL;
+	tests_list.run_tests = 0;
+	tests_list.skipped_tests = 0;
 	return (tests_list);
 }
