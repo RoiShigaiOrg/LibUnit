@@ -32,8 +32,7 @@ void	display_header(t_test_group *test_group)
 	ft_printf(" ======================>\n\n");
 	ft_printf("Collected %i tests", test_group->run_tests);
 	if (test_group->skipped_tests)
-		ft_printf(" %s(skipped %i tests)%s", YELLOW, test_group->skipped_tests,
-			RESET);
+		ft_printf(" (skipped %i tests)", test_group->skipped_tests);
 	ft_printf("\n\n");
 }
 
@@ -41,12 +40,12 @@ void	display_footer(t_test_group *test_group, int success)
 {
 	ft_printf("\n");
 	if (success == test_group->run_tests)
-		ft_printf("%s====> %s tests success (%i / %i)%s", GREEN,
-			test_group->function_name, success, test_group->run_tests, RESET);
+		ft_printf("====> %s tests success (%i / %i)",
+			test_group->function_name, success, test_group->run_tests);
 	else
-		ft_printf("%s====> %s tests failed (%i / %i)%s", RED,
+		ft_printf("====> %s tests failed (%i / %i)",
 			test_group->function_name,
-			success, test_group->run_tests, RESET);
+			success, test_group->run_tests);
 	ft_printf("\n\n");
 }
 
@@ -61,11 +60,11 @@ int	display_result(t_test_group *test_group, t_unit_test *test, int status)
 		return (-2);
 	}
 	if (status == 0)
-		ft_printf("%s: %s%s: %s%s\n", test_group->function_name, GREEN,
-			test->name, status_str, RESET);
+		ft_printf("%s: %s: %s\n", test_group->function_name,
+			test->name, status_str);
 	else
-		ft_printf("%s: %s%s: %s%s\n", test_group->function_name, RED,
-			test->name, status_str, RESET);
+		ft_printf("%s: %s: %s\n", test_group->function_name,
+			test->name, status_str);
 	if (status_str != NULL)
 		free(status_str);
 	return (1);
