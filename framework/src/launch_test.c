@@ -23,12 +23,16 @@ int	launch_test(t_test_group *test_group)
 	int		ret;
 	pid_t	child_pid;
 	t_list	*test_list;
+	int		success;
 
 	ret = 0;
+	success = 0;
 	if (!test_group)
 		return (-1);
 	display_header(test_group);
 	test_list = test_group->tests_list;
+	if (!test_list)
+		return (0);
 	while (test_list)
 	{
 		child_pid = fork();
@@ -36,11 +40,14 @@ int	launch_test(t_test_group *test_group)
 			exit (test(test_list->content));
 		else
 			wait(&status);
+		if (status == 0)
+			success++;
 		if (WIFEXITED(status))
 			display_result(test_group, test_list->content, WEXITSTATUS(status));
 		else if (WIFSIGNALED(status))
 			display_result(test_group, test_list->content, WTERMSIG(status));
 		test_list = test_list->next;
 	}
+	display_footer(test_group, success);
 	return (ret);
 }

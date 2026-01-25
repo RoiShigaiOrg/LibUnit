@@ -41,6 +41,7 @@ int				load_test(t_test_group *test_group, char *name, int (*test_function)(void
 int				launch_test(t_test_group *test_group);
 int				display_result(t_test_group *test_group, t_unit_test *test, int status);
 void			display_header(t_test_group *test_group);
+void			display_footer(t_test_group *test_group, int success);
 t_test_group	new_test_group(char *function_name);
 int				run_print_fct(int (*f)(void));
 

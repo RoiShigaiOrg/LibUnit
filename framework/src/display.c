@@ -47,10 +47,10 @@ void	display_footer(t_test_group *test_group, int success)
 {
 	ft_printf("\n");
 	if (success == test_group->run_tests)
-		ft_printf("%s%s tests success (%i / %i)%s", GREEN,
+		ft_printf("%s====> %s tests success (%i / %i)%s", GREEN,
 			test_group->function_name, success, test_group->run_tests, RESET);
 	else
-		ft_printf("%s%s tests failed (%i / %i)%s", RED,
+		ft_printf("%s====> %s tests failed (%i / %i)%s", RED,
 			test_group->function_name,
 			success, test_group->run_tests, RESET);
 	ft_printf("\n\n");
