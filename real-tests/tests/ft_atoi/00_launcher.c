@@ -12,6 +12,6 @@ int ft_atoi_launcher(void)
 	load_test(&tests, "Test negative value", &test_negative_value, 0);
 	load_test(&tests, "Test valid prefixes", &test_valid_prefixes, 0);
 	load_test(&tests, "Test invalid prefixes", &test_invalid_prefixes, 0);
-	launch_test(&(tests.tests_list));
+	launch_test(&tests);
 	return (0);
 }

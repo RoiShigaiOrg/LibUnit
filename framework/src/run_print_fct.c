@@ -17,18 +17,25 @@
 
 int	run_print_fct(int (*f)(void))
 {
-	int	bak;
-	int	fd;
+	int	fd_stdout_cpy;
+	int	fd_dev_null;
 	int	res;
 
 	fflush(stdout);
-	bak = dup(1);
-	fd = open("/dev/null", O_WRONLY);
-	dup2(fd, 1);
-	close(fd);
+	fd_stdout_cpy = dup(1);
+	if (fd_stdout_cpy == -1)
+		return (-1);
+	fd_dev_null = open("/dev/null", O_WRONLY);
+	if (fd_dev_null == -1)
+	{
+		close(fd_stdout_cpy);
+		return (-1);
+	}
+	dup2(fd_dev_null, 1);
+	close(fd_dev_null);
 	res = f();
 	fflush(stdout);
-	dup2(bak, 1);
-	close(bak);
+	dup2(fd_stdout_cpy, 1);
+	close(fd_stdout_cpy);
 	return (res);
 }

@@ -13,7 +13,8 @@
 #include "libunit.h"
 #include <stdlib.h>
 
-int	load_test(t_test_group *test_group, char *name, int (*test_function)(void), int skip)
+int	load_test(t_test_group *test_group, char *name,
+				int (*test_function)(void), int skip)
 {
 	t_unit_test	*test;
 	t_list		*new_node;
